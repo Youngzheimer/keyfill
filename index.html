@@ -1,12 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>keyfill</title>
+
+    <style>
+        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+        /* color scheme */
+        :root {
+            --bg1: #222831;
+            --bg2: #2B323A;
+            --bg3: #292F38;
+            --bg4: #2F3540;
+            --bg5: #31363F;
+            --prim: #76ABAE;
+            --text: #EEEEEE;
+        }
+
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100dvw;
+            height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Pretendard', sans-serif;
+            background-color: var(--bg1);
+            color: var(--text);
+            overflow: hidden;
+        }
+
+        .top {
+            width: 100dvw;
+            flex: 4;
+            background-color: var(--bg2);
+        }
+
+        .bottom {
+            width: 100dvw;
+            flex: 1;
+            background-color: var(--bg1);
+            display: flex;
+            flex-direction: row;
+        }
+
+        .bottom__inner__left {
+            display: flex;
+            flex: 4;
+            background-color: var(--bg3);
+            gap: 10px;
+            padding: 0 10px;
+            flex-direction: row;    
+        }
+
+        .bottom__inner__left__inner {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+        }
+
+        .bottom__inner__left__inner .title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .display__select {
+            position: relative;
+            width: 330px;
+            height: 80px;
+            user-select: none;
+            border-radius: 5px;
+        }
+
+        .display__select__selected {
+            width: 300px;
+            height: 50px;
+            padding: 15px;
+            background-color: var(--bg4);
+            cursor: pointer;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .display__select__inner {
+            position: absolute;
+            width: 330px;
+            bottom: 80px;
+            max-height: 200px;
+            /* padding: 10px 15px; */
+            overflow-y: auto;
+            background-color: var(--bg5);
+            /* display: none; */
+            pointer-events: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            transform: translateY(10px);
+            opacity: 0;
+        }
+
+        .display__select__item {
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+        }
+
+        .display__select__item:hover {
+            background-color: var(--prim);
+        }
+
+        .display__select.active .display__select__inner {
+            display: block;
+        }
+
+        .bottom__inner__right {
+            /* display: flex; */
+            flex: 1;
+            background-color: var(--bg4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bottom__inner__right__startstop {
+            width: 200px;
+            height: 50px;
+            background-color: var(--prim);
+            color: var(--text);
+            border: none;
+            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .bottom__inner__right__startstop:hover {
+            transform: scale(1.03);
+        }
+    </style>
 </head>
+
 <body>
-    <button id="displays">get all displays</button>
+    <div class="top">
+        dd
+    </div>
+
+    <div class="bottom">
+        <div class="bottom__inner__left">
+            <div class="bottom__inner__left__inner">
+                <div class="title">Fill Display</div>
+                <div class="display__select" id="filldisplayselect">
+                    <div class="display__select__selected" value="0">Nothing Selected</div>
+                    <div class="display__select__inner">
+                        <div class="display__select__item" value="9">
+                            Sidecar Display (AirPlay) 1920x1080@60Hz
+                        </div>
+                        <div class="display__select__item" value="10">
+                            Sidecar Display (AirPlay) 1920x1080@60Hz
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom__inner__left__inner">
+                <div class="title">Key Display</div>
+                <div class="display__select" id="keydisplayselect">
+                    <div class="display__select__selected" value="0">Nothing Selected</div>
+                    <div class="display__select__inner">
+                        <div class="display__select__item" value="9">
+                            Sidecar Display (AirPlay) 1920x1080@60Hz
+                        </div>
+                        <div class="display__select__item" value="10">
+                            Sidecar Display (AirPlay) 1920x1080@60Hz
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="display__select" id="filldisplayselect"></div> -->
+        <div class="bottom__inner__right">
+            <button class="bottom__inner__right__startstop">Start</button>
+        </div>
+    </div>
+    </div>
+
+    <!-- <button id="displays">get all displays</button>
     <button id="show">show</button>
 
     <span id="dsplist"></span>
@@ -19,8 +209,9 @@
     <button id="changetitle">change title</button>
 
     <button id="outline">outline</button>
-    <button id="outlineshadow">outline shadow</button>
+    <button id="outlineshadow">outline shadow</button>-->
 
     <script src="./index.js"></script>
 </body>
+
 </html>
