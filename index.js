@@ -1,6 +1,6 @@
 const { ipcRenderer } = require("electron");
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("displays").addEventListener("click", function () {
     ipcRenderer.send("displays");
   });
@@ -10,6 +10,26 @@ document.addEventListener("DOMContentLoaded", function () {
     const keyDisplayID = document.getElementById("keydsp").value;
     ipcRenderer.send("show", fillDisplayID, keyDisplayID);
   });
+
+  document.getElementById("changetext").addEventListener("click", function () {
+    const content = document.getElementById("text").value;
+    ipcRenderer.send("changeText", content);
+  });
+
+  document.getElementById("changetitle").addEventListener("click", function () {
+    const content = document.getElementById("text").value;
+    ipcRenderer.send("changeTitle", content);
+  });
+
+  document.getElementById("outline").addEventListener("click", function () {
+    ipcRenderer.send("changeOutline");
+  });
+
+  document
+    .getElementById("outlineshadow")
+    .addEventListener("click", function () {
+      ipcRenderer.send("changeOutlineShadow");
+    });
 
   ipcRenderer.on("displays", function (event, displays) {
     console.log(displays);

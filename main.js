@@ -67,6 +67,34 @@ app.whenReady().then(() => {
     keyScreen.loadFile("key.html");
     keyScreen.setFullScreen(true); // 풀스크린 활성화
   });
+
+  ipcMain.on("changeText", (event, text) => {
+    const allWindows = BrowserWindow.getAllWindows();
+    allWindows.forEach((window) => {
+      window.webContents.send("changeText", text);
+    });
+  });
+
+  ipcMain.on("changeTitle", (event, title) => {
+    const allWindows = BrowserWindow.getAllWindows();
+    allWindows.forEach((window) => {
+      window.webContents.send("changeTitle", title);
+    });
+  });
+
+  ipcMain.on("changeOutline", () => {
+    const allWindows = BrowserWindow.getAllWindows();
+    allWindows.forEach((window) => {
+      window.webContents.send("changeOutline");
+    });
+  });
+
+  ipcMain.on("changeOutlineShadow", () => {
+    const allWindows = BrowserWindow.getAllWindows();
+    allWindows.forEach((window) => {
+      window.webContents.send("changeOutlineShadow");
+    });
+  });
 });
 
 app.on("window-all-closed", () => {
