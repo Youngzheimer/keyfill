@@ -35,10 +35,192 @@
             overflow: hidden;
         }
 
+        .addform {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .addform.active {
+            display: flex;
+        }
+
+        .addform__inner {
+            width: 300px;
+            height: 300px;
+            background-color: var(--bg2);
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 30px;
+        }
+
+        .addform__inner .title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .addform__inner .title span {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .addform__inner .title button {
+            width: 30px;
+            height: 30px;
+        }
+
+        .addform__inner span {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .addform__inner input {
+            width: 100%;
+            height: 30px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--bg4);
+            color: var(--text);
+            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .addform__inner textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--bg4);
+            color: var(--text);
+            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+            /* prevent resize */
+            resize: none;
+        }
+
+        .addform__inner button {
+            width: 100%;
+            height: 40px;
+            background-color: var(--prim);
+            color: var(--text);
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .addform__inner button:hover {
+            transform: scale(1.03);
+        }
+
         .top {
             width: 100dvw;
             flex: 4;
             background-color: var(--bg2);
+            display: flex;
+            flex-direction: row;
+        }
+
+        .top__left {
+            flex: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--bg4);
+        }
+
+        .top__left span {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 10px;
+        }
+
+        .top__left__addbutton {
+            width: 100%;
+            height: 50px;
+            justify-content: space-between;
+            display: flex;
+            align-items: center;
+        }
+
+        .top__left__addbutton button {
+            width: 50px;
+            height: 30px;
+            background-color: var(--prim);
+            color: var(--text);
+            border: none;
+            border-radius: 5px;
+            font-size: .8rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+        }
+
+        .top__left__addbutton button:hover {
+            transform: scale(1.03);
+        }
+
+        .top__right {
+            flex: 4;
+            height: 80dvh;
+            display: flex;
+            flex-direction: row;
+            overflow: hidden;
+        }
+
+        .top__right__views {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 20px;
+            overflow-y: scroll;
+        }
+
+        .top__right__view {
+            width: 100%;
+            /* padding: 10px; */
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-bottom: 50px;
+        }
+
+        .top__right__view .title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .top__right__view__content {
+            font-size: 1.5rem;
+            font-weight: 300;
+            padding: 10px;
+            background-color: var(--bg4);
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .top__right__view__content.active {
+            background-color: var(--prim);
+        }
+
+        .top__right__view__content span {
+            white-space: pre-line;
         }
 
         .bottom {
@@ -55,7 +237,7 @@
             background-color: var(--bg3);
             gap: 10px;
             padding: 0 10px;
-            flex-direction: row;    
+            flex-direction: row;
         }
 
         .bottom__inner__left__inner {
@@ -154,8 +336,40 @@
 </head>
 
 <body>
+    <div class="addform">
+        <div class="addform__inner">
+            <div class="title">
+                <span>Add New View</span>
+                <button id="addform__inner__close">X</button>
+            </div>
+            <span>제목</span>
+            <input type="text" name="" id="addform__inner__name" placeholder="name">
+            <span>내용</span>
+            <textarea name="" id="addform__inner__content" placeholder="content"></textarea>
+            <button id="addform__inner__submit">만들기</button>
+        </div>
+    </div>
+
     <div class="top">
-        dd
+        <div class="top__left">
+            <div class="top__left__addbutton">
+                <span>Views</span>
+                <button id="addbutton">Add</button>
+            </div>
+        </div>
+        <div class="top__right">
+            <div class="top__right__views">
+                <div class="top__right__view">
+                    <span class="title">View 1</span>
+                    <div class="top__right__view__content">
+                        <span>희붐하게 밝아오던 별빛<br>하롱하롱 꽃잎 내리던 밤</span>
+                    </div>
+                    <div class="top__right__view__content">
+                        <span>죽은 나무토막에 온기를 불어넣고<br>가만히 나를 깨웠지요</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="bottom">
