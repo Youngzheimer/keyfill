@@ -36,4 +36,15 @@ document.addEventListener("DOMContentLoaded", () => {
     outlineshadow.style.display = "block";
     outline.style.display = "none";
   });
+
+  ipcRenderer.on("blackScreen", (_, toggle) => {
+    const blackScreen = document.querySelector(".blackscreen");
+    if (blackScreen) {
+      if (toggle) {
+        blackScreen.style.opacity = "1";
+      } else {
+        blackScreen.style.opacity = "0";
+      }
+    }
+  });
 });

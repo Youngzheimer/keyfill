@@ -95,6 +95,13 @@ app.whenReady().then(() => {
       window.webContents.send("changeOutlineShadow");
     });
   });
+
+  ipcMain.on("blackScreen", (event, toggle) => {
+    const allWindows = BrowserWindow.getAllWindows();
+    allWindows.forEach((window) => {
+      window.webContents.send("blackScreen", toggle);
+    });
+  });
 });
 
 app.on("window-all-closed", () => {

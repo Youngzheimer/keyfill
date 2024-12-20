@@ -223,6 +223,46 @@
             white-space: pre-line;
         }
 
+        .top__right__controls {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 20px;
+            background-color: var(--bg1);
+        }
+
+        .top__right__contorls__inner {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .control__item {
+            text-align: center;
+            width: 100%;
+            height: 100px;
+            background-color: var(--bg4);
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .control__item:hover {
+            transform: scale(1.03);
+        }
+
+        .control__item.active {
+            background-color: var(--prim);
+        }
+
         .bottom {
             width: 100dvw;
             flex: 1;
@@ -359,13 +399,29 @@
         </div>
         <div class="top__right">
             <div class="top__right__views">
-                <div class="top__right__view">
+                <!-- <div class="top__right__view">
                     <span class="title">View 1</span>
                     <div class="top__right__view__content">
                         <span>희붐하게 밝아오던 별빛<br>하롱하롱 꽃잎 내리던 밤</span>
                     </div>
                     <div class="top__right__view__content">
                         <span>죽은 나무토막에 온기를 불어넣고<br>가만히 나를 깨웠지요</span>
+                    </div>
+                </div> -->
+            </div>
+            <div class="top__right__controls">
+                <div class="top__right__contorls__inner">
+                    <div class="control__item" id="blackscreen">
+                        <span>BLACK<br>SCREEN</span>
+                    </div>
+                    <div class="control__item" id="idk">
+                        <span>IDK</span>
+                    </div>
+                    <div class="control__item look" id="outline">
+                        <span>OUTLINE</span>
+                    </div>
+                    <div class="control__item look active" id="outlineshadow">
+                        <span>OUTLINE/<br>SHADOW</span>
                     </div>
                 </div>
             </div>
