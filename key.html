@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100dvw;
+            height: 100dvh;
+            font-family: 'Pretendard', sans-serif;
+            background-color: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .outlineshadow {
+            /* display: none; */
+
+            position: absolute;
+            bottom: 100px;
+            text-align: center;
+            width: 100dvw;
+        }
+
+        .outlineshadow .title {
+            position: absolute;
+            left: 10dvw;
+            top: -5dvw;
+            font-size: 2.5dvw;
+            color: #FFFFFF;
+            font-weight: 400;
+            text-shadow: -1px -1px 0 #FFFFFF, 1px -1px 0 #FFFFFF, -1px 1px 0 #FFFFFF, 1px 1px 0 #FFFFFF, 0 0 7.5px #FFFFFF;
+            margin: 10px 0;
+            text-align: left;
+            padding-left: 10px;
+        }
+        
+        .outlineshadow .text {
+            font-size: 4dvw;
+            color: #FFFFFF;
+            font-weight: 600;
+            text-shadow: -1px -1px 0 #FFFFFF, 1px -1px 0 #FFFFFF, -1px 1px 0 #FFFFFF, 1px 1px 0 #FFFFFF, 0 0 7.5px #FFFFFF;
+            margin: 10px 0;
+        }
+
+        .outline {
+            display: none;
+
+            position: absolute;
+            bottom: 100px;
+            text-align: center;
+            width: 100dvw;
+        }
+
+        .outline .title {
+            position: absolute;
+            left: 10dvw;
+            top: -5dvw;
+            font-size: 2.5dvw;
+            color: #FFFFFF;
+            font-weight: 600;
+            /* text outline */
+            -webkit-text-stroke: .075dvw #FFFFFF;
+            margin: 10px 0;
+            text-align: left;
+            padding-left: 10px;
+        }
+
+        .outline .text {
+            font-size: 4dvw;
+            color: #FFFFFF;
+            font-weight: 900;
+            /* text outline */
+            -webkit-text-stroke: .175dvw #FFFFFF;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="outlineshadow">
+        <span class="title"><끝없는 사랑 / WELOVE></span>
+        <p class="text">
+            하늘보다 높은 주의 사랑<br>
+            하늘에서 주 자비 내려
+        </p>
+    </div>
+    
+    <div class="outline">
+        <span class="title">[끝없는 사랑 - WELOVE]</span>
+        <p class="text">
+            하늘보다 높은 주의 사랑<br>
+            하늘에서 주 자비 내려
+        </p>
+    </div>
+
+    <script src="keyfill.js"></script>
+</body>
+</html>
